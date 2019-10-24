@@ -1,8 +1,11 @@
-import { Table, Divider, Tag, Menu, Icon } from 'antd'
+import { Table, Menu, Icon } from 'antd'
 import 'antd/dist/antd.css';
 import React from 'react';
+import MiniPackageResouce from '../../Resources/MiniPackageResouce';
 
 export default class MainPage extends React.Component{
+
+
     constructor(props){
         super(props);
         this.state = {
@@ -35,13 +38,22 @@ export default class MainPage extends React.Component{
         ]
         }
     }
+
+    componentDidMount(){
+        // console.log("Working");
+        MiniPackageResouce.getAll()
+        // .then(res => res.json()).then(res => this.props.refreshContent(res));
+        // .then(res => res.json()).then(res => console.log(res));
+        .then(res => res.json()).then(res => this.props.refreshContent(res));
+    }
+    
     handleClick = e => {
         this.props.filterTypeChanged(e.key);
     };
 
     render(){
         return(
-            <div id="containerID" class="container">
+            <div id="containerID" className="container">
                 <h2>Mini Package</h2>
                 <Menu onClick={this.handleClick} selectedKeys={this.props.filterType} mode="horizontal">
                     <Menu.Item key="all">
@@ -58,7 +70,7 @@ export default class MainPage extends React.Component{
                     </Menu.Item>
                 </Menu>
 
-                <Table columns={this.state.columns}></Table>
+                <Table columns={this.state.columns} dataSource={this.props.packageList.map(_package => _package = {..._package, key: _package.packageNumber})}></Table>
                 
             </div>
         );

@@ -11,6 +11,8 @@ export default (state = initialState, { type, payload}) => {
             }
         case "CHANGE_FILTER_TYPE":
             return {...state, filterType: payload}
+        case "REFRESH":
+            return {...state, packageList: payload}
         default:
             return state;
     }

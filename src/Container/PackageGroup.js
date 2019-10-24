@@ -27,6 +27,12 @@ const mapDispatchToProps = dispatch => ({
         
     },
     
+    refreshContent: (contentList) =>
+    dispatch({
+        type: "REFRESH",
+        payload: contentList
+    }),
+    
     filterTypeChanged: (filterType) =>
     dispatch({
         type: "CHANGE_FILTER_TYPE",
@@ -38,4 +44,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(PackageWarehouse)
+)(MainPage)
