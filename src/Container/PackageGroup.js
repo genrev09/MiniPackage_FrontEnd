@@ -1,9 +1,11 @@
 import { connect } from "react-redux";
 import PackageWarehouse from "../Component/PackageWarehouse/PackageWarehouse";
 import MiniPackageResouce from "../Resources/MiniPackageResouce";
+import MainPage from "../Component/MainPage/MainPage";
 
 const mapStateToProps = state => ({
-    packageList: state.packageList
+    packageList: state.packageList,
+    filterType: state.filterType
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -23,7 +25,13 @@ const mapDispatchToProps = dispatch => ({
             })
           })
         
-    }
+    },
+    
+    filterTypeChanged: (filterType) =>
+    dispatch({
+        type: "CHANGE_FILTER_TYPE",
+        payload: filterType
+    }),
 
 });
 

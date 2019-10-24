@@ -1,5 +1,6 @@
 const initialState = {
-    packageList: []
+    packageList: [],
+    filterType: 'all'
 };
 
 export default (state = initialState, { type, payload}) => {
@@ -8,6 +9,8 @@ export default (state = initialState, { type, payload}) => {
             return {...state, 
                 packageList: [...state.packageList, payload]
             }
+        case "CHANGE_FILTER_TYPE":
+            return {...state, filterType: payload}
         default:
             return state;
     }

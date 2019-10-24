@@ -6,6 +6,7 @@ import {createStore} from "redux";
 import { Provider } from "react-redux";
 import reducer from "./Reducer/index";
 import PackageGroup from './Container/PackageGroup';
+import MainPage from './Component/MainPage/MainPage';
 
 const store = createStore(reducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
